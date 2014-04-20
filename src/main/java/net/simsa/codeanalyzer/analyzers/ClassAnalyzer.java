@@ -39,8 +39,10 @@ public class ClassAnalyzer implements Analyzer {
 
     public static void main(String[] args) throws Exception {
 	// for testing purposes.
-	TFile file = new TFile(
-		"C:\\Users\\jenny\\workspace\\analyze\\analyzer\\target\\classes\\net\\simsa\\codeanalyzer\\analyzers\\DummyTest.class");
+	TFile file = new TFile(args[0]);
+	if(!file.exists()) {
+	    throw new IllegalArgumentException("File not found: " + file.getCanonicalPath());
+	}
 	ClassAnalyzer analyzer = new ClassAnalyzer();
 	analyzer.setSource(file);
 	analyzer.process();
