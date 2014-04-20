@@ -5,9 +5,12 @@ import java.io.IOException;
 import net.java.truevfs.access.TFile;
 import net.java.truevfs.access.TFileInputStream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassReader;
 
 public class ClassAnalyzer implements Analyzer {
+    Logger log = LogManager.getLogger();
 
     private TFile file;
 
@@ -25,7 +28,7 @@ public class ClassAnalyzer implements Analyzer {
     public void process() throws IOException {
 	TFileInputStream stream = null;
 	try {
-	    System.out.println("Absolute path " + file.getAbsolutePath());
+	    log.debug("Processing class " + file.getAbsolutePath());
 	    stream = new TFileInputStream(file);
 	    ClassPrinter cp = new ClassPrinter();
 	    ClassReader cr = new ClassReader(stream);
@@ -35,6 +38,9 @@ public class ClassAnalyzer implements Analyzer {
 		stream.close();
 	    }
 	}
+	// TODO: Debug use - early abort while I'm coding it up so I don't spam myself.
+//	System.err.println("Exiting early for debugging purposes.");
+//	System.exit(1);
     }
 
     public static void main(String[] args) throws Exception {

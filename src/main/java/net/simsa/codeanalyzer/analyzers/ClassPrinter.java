@@ -19,23 +19,24 @@ public class ClassPrinter extends ClassVisitor {
     }
 
     public void visitSource(String source, String debug) {
-	System.out.println("Source " + source);
+	System.out.println("   Source " + source);
     }
 
     public void visitOuterClass(String owner, String name, String desc) {
-	System.out.println("Outer class " + owner + " - " + name);
+	System.out.println("   Outer class " + owner + " - " + name);
     }
 
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-	System.out.println("Annotation " + desc);
+	System.out.println("   Annotation " + desc);
 	return null;
     }
 
     public void visitAttribute(Attribute attr) {
+	System.out.println("   Attribute " + attr.toString());
     }
 
     public void visitInnerClass(String name, String outerName, String innerName, int access) {
-	System.out.println("Inner class " + name + " , " + outerName + " , " + innerName);
+	System.out.println("   Inner class " + name + " , " + outerName + " , " + innerName);
     }
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
@@ -45,7 +46,7 @@ public class ClassPrinter extends ClassVisitor {
 
     public MethodVisitor visitMethod(int access, String name, String desc, String signature,
 	    String[] exceptions) {
-	System.out.println(" " + name + desc);
+	System.out.println("   Method " + name + desc);
 	return null;
     }
 

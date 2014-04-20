@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 public class Stats {
 	static Logger log = LogManager.getLogger();
 	
-	public static int debugEarlyExit = -1;
+	public static int debugEarlyExit = 200;
 
 	static Map<String, Integer> counts = new HashMap<String, Integer>();
 	
