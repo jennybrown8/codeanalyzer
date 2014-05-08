@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import net.simsa.codeanalyzer.filesystem.ZipFileWalker;
-import net.simsa.codeanalyzer.model.Stats;
+import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,18 +18,8 @@ public class AnalyzerFactory {
     public AnalyzerFactory() {
     }
 
-    private void earlyExit() {
-	log.info("Exiting early.");
-	Stats.display();
-	System.exit(0);
-    }
-
     public Analyzer get(String extension) {
-	Stats.record(extension);
-	filesProcessed++;
-	if ((Stats.debugEarlyExit != -1) && (filesProcessed > Stats.debugEarlyExit)) {
-	    earlyExit();
-	}
+	DebugStats.record(extension);
 	if (extension.equals(NULLEXTENSION)) {
 	    return new NoOpAnalyzer();
 	} else if (extension.equals("zip") || extension.equals("war") || extension.equals("jar")) {
