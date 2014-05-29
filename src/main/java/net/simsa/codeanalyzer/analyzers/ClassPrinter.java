@@ -21,7 +21,7 @@ public class ClassPrinter extends ClassVisitor {
 
     public void visit(int version, int access, String name, String signature, String superName,
 	    String[] interfaces) {
-	System.out.println(name + " extends " + superName + " {");
+	System.out.println("Class definition: " + name + " extends " + superName + " {");
     }
 
     public void visitSource(String source, String debug) {
@@ -46,7 +46,7 @@ public class ClassPrinter extends ClassVisitor {
     }
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-	System.out.println(" " + desc + " " + name);
+	System.out.println("   Field " + desc + " " + name + " " + signature + " " + value);
 	return null;
     }
 
