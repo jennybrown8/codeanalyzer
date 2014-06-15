@@ -22,16 +22,10 @@ public class DebugStats {
 	counts.put(extension, ++count);
 
 	filesProcessed++;
-	if ((DebugStats.debugEarlyExit != -1) && (filesProcessed > DebugStats.debugEarlyExit)) {
-	    earlyExit();
-	}
-
     }
 
-    private static void earlyExit() {
-	log.info("Exiting early.");
-	DebugStats.display();
-	throw new RuntimeException("Early exit due to debug file limit reached at " + filesProcessed);
+    public static boolean shouldEarlyExit() {
+	return (DebugStats.debugEarlyExit != -1) && (filesProcessed > debugEarlyExit);
     }
 
     public static void display() {

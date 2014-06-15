@@ -1,7 +1,9 @@
 package net.simsa.codeanalyzer.analyzers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.model.EntityDAO;
 import net.simsa.codeanalyzer.model.JClass;
 
 import org.objectweb.asm.AnnotationVisitor;
@@ -16,11 +18,19 @@ public class ClassEntityVisitor extends ClassVisitor {
     JClass jclass;
     TFile fileVisiting;
     
-    public ClassEntityVisitor(TFile file) {
+    public ClassEntityVisitor() {
 	super(Opcodes.ASM4);
 	jclass = new JClass();
+    }
+    
+    public List<JClass> getEntities() {
+	List<JClass> list = new ArrayList<JClass>();
+	list.add(jclass);
+	return list;
+    }
+    
+    public void setFile(TFile file) {
 	this.fileVisiting = file;
-
     }
 
     public void visit(int version, int access, String name, String signature, String superName,
@@ -70,6 +80,5 @@ public class ClassEntityVisitor extends ClassVisitor {
     public void visitEnd() {
 	System.out.print("Visited " + jclass.getFullyQualifiedName());
 	System.out.println();
-	EntityDAO.getManager().insert(jclass);
     }
 }

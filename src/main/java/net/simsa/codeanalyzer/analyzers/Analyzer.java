@@ -1,7 +1,7 @@
 package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 
 import net.java.truevfs.access.TFile;
 
@@ -18,4 +18,6 @@ public interface Analyzer {
      */
     public void process() throws IOException;
 
+    public List<Object> getEntities();
+    
 }

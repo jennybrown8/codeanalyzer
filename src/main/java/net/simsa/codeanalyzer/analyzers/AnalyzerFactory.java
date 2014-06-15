@@ -3,7 +3,8 @@ package net.simsa.codeanalyzer.analyzers;
 import java.io.File;
 import java.io.IOException;
 
-import net.simsa.codeanalyzer.filesystem.ZipFileWalker;
+import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
+import net.simsa.codeanalyzer.analyzers.directory.ZipFileWalker;
 import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,9 +19,10 @@ public class AnalyzerFactory {
     public AnalyzerFactory() {
     }
 
-    public Analyzer get(String extension) {
-	DebugStats.record(extension);
-	if (extension.equals(NULLEXTENSION)) {
+    public Analyzer get(String extension, boolean isDirectory) {
+	if (isDirectory) {
+	    return new DirectoryWalker();
+	} else if (extension.equals(NULLEXTENSION)) {
 	    return new NoOpAnalyzer();
 	} else if (extension.equals("zip") || extension.equals("war") || extension.equals("jar")) {
 	    return new ZipFileWalker();

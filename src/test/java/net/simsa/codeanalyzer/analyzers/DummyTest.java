@@ -1,6 +1,7 @@
 package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
+import java.util.List;
 
 import net.java.truevfs.access.TFile;
 
@@ -21,6 +22,10 @@ public class DummyTest implements Analyzer {
 	public MyInner() {
 	    
 	}
+    }
+
+    public List<Object> getEntities() {
+	return null;
     }
     
 }

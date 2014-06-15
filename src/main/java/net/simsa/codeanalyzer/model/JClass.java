@@ -1,15 +1,16 @@
 package net.simsa.codeanalyzer.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import javax.sql.DataSource;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Models a class and what we know about it from binary/source analysis
  * 
  */
+@Entity
 public class JClass {
     Integer id;
     String fullyQualifiedName;
@@ -20,12 +21,15 @@ public class JClass {
     String packageId;
     String organization;
     String superclassName;
-    Integer superclass_id;
+    Integer superclassId;
 
     public JClass() {
 
     }
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     public Integer getId() {
 	return id;
     }
@@ -98,12 +102,12 @@ public class JClass {
 	this.superclassName = superclassName;
     }
 
-    public Integer getSuperclass_id() {
-	return superclass_id;
+    public Integer getSuperclassId() {
+	return superclassId;
     }
 
-    public void setSuperclass_id(Integer superclass_id) {
-	this.superclass_id = superclass_id;
+    public void setSuperclassId(Integer superclassId) {
+	this.superclassId = superclassId;
     }
 
 }

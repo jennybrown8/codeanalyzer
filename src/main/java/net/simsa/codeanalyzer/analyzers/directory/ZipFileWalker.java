@@ -1,12 +1,14 @@
-package net.simsa.codeanalyzer.filesystem;
+package net.simsa.codeanalyzer.analyzers.directory;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
+import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,11 +17,17 @@ public class ZipFileWalker implements Analyzer {
     static Logger log = LogManager.getLogger();
 
     AnalyzerFactory analyzers;
+    List<Object> entities;
 
     File file;
 
     public ZipFileWalker() {
 	analyzers = new AnalyzerFactory();
+	entities = new ArrayList<Object>();
+    }
+
+    public List<Object> getEntities() {
+	return entities;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -37,15 +45,12 @@ public class ZipFileWalker implements Analyzer {
 
 	for (TFile file : files) {
 	    log.info("ZipFile entry isDirectory = " + file.isDirectory() + ", name=" + file.getAbsolutePath());
+	    if (DebugStats.shouldEarlyExit()) { return; }
 
-	    Analyzer analyzer = null;
-	    if (file.isDirectory()) {
-		analyzer = new DirectoryWalker(file);
-	    } else {
-		analyzer = analyzers.get(analyzers.getFileExtension(file.getName()));
-		analyzer.setSource(file);
-	    }
+	    Analyzer analyzer = analyzers.get(analyzers.getFileExtension(file.getName()), file.isDirectory());
+	    analyzer.setSource(file);
 	    analyzer.process();
+	    entities.addAll(analyzer.getEntities());
 	}
 
     }

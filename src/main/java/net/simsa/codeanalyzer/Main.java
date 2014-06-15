@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.filesystem.DirectoryWalker;
+import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
 import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
@@ -38,11 +38,6 @@ public class Main extends StartMain {
 	} else {
 	    Main me = new Main(args);
 	    me.init(args);
-	    /*
-	     * <properties> <downloadSources>true</downloadSources>
-	     * <downloadJavadocs>true</downloadJavadocs> </properties>
-	     */
-
 	}
     }
 }
