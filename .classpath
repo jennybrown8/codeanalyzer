@@ -1,26 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/maven/repository/javax/inject/javax.inject/1/javax.inject-1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/javax/enterprise/cdi-api/1.1/cdi-api-1.1.jar" sourcepath="M2_REPO/javax/enterprise/cdi-api/1.1/cdi-api-1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar" sourcepath="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0-sources.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/ow2/asm/asm-all/5.0.1/asm-all-5.0.1.jar" sourcepath="M2_REPO/org/ow2/asm/asm-all/5.0.1/asm-all-5.0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-profile-full/0.10.6/truevfs-profile-full-0.10.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-access/0.10.6/truevfs-access-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-access/0.10.6/truevfs-access-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-file/0.10.6/truevfs-driver-file-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-file/0.10.6/truevfs-driver-file-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-kernel-spec/0.10.6/truevfs-kernel-spec-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-kernel-spec/0.10.6/truevfs-kernel-spec-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-cio/2.3.4/truecommons-cio-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-cio/2.3.4/truecommons-cio-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-io/2.3.4/truecommons-io-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-io/2.3.4/truecommons-io-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-shed/2.3.4/truecommons-shed-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-shed/2.3.4/truecommons-shed-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-services/2.3.4/truecommons-services-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-services/2.3.4/truecommons-services-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-logging/2.3.4/truecommons-logging-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-logging/2.3.4/truecommons-logging-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-access-swing/0.10.6/truevfs-access-swing-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-access-swing/0.10.6/truevfs-access-swing-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-jar/0.10.6/truevfs-driver-jar-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-jar/0.10.6/truevfs-driver-jar-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-zipdriver/0.10.6/truevfs-comp-zipdriver-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-zipdriver/0.10.6/truevfs-comp-zipdriver-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-zip/0.10.6/truevfs-comp-zip-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-zip/0.10.6/truevfs-comp-zip-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-spec/2.3.4/truecommons-key-spec-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-spec/2.3.4/truecommons-key-spec-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-compress/1.7/commons-compress-1.7.jar" sourcepath="M2_REPO/org/apache/commons/commons-compress/1.7/commons-compress-1.7-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46.jar" sourcepath="M2_REPO/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-zip/0.10.6/truevfs-driver-zip-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-zip/0.10.6/truevfs-driver-zip-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-ibm437/0.10.6/truevfs-comp-ibm437-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-ibm437/0.10.6/truevfs-comp-ibm437-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-kernel-impl/0.10.6/truevfs-kernel-impl-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-kernel-impl/0.10.6/truevfs-kernel-impl-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.jar" sourcepath="M2_REPO/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-console/2.3.4/truecommons-key-console-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-console/2.3.4/truecommons-key-console-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-default/2.3.4/truecommons-key-default-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-default/2.3.4/truecommons-key-default-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-swing/2.3.4/truecommons-key-swing-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-swing/2.3.4/truecommons-key-swing-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-http/0.10.6/truevfs-driver-http-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-http/0.10.6/truevfs-driver-http-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.3.2/httpclient-4.3.2.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient/4.3.2/httpclient-4.3.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.3.1/httpcore-4.3.1.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpcore/4.3.1/httpcore-4.3.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.6/commons-codec-1.6.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.6/commons-codec-1.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.6/jcl-over-slf4j-1.7.6.jar" sourcepath="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.6/jcl-over-slf4j-1.7.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-odf/0.10.6/truevfs-driver-odf-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-odf/0.10.6/truevfs-driver-odf-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-tar/0.10.6/truevfs-driver-tar-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-tar/0.10.6/truevfs-driver-tar-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-tardriver/0.10.6/truevfs-comp-tardriver-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-tardriver/0.10.6/truevfs-comp-tardriver-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-tar-bzip2/0.10.6/truevfs-driver-tar-bzip2-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-tar-bzip2/0.10.6/truevfs-driver-tar-bzip2-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-tar-gzip/0.10.6/truevfs-driver-tar-gzip-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-tar-gzip/0.10.6/truevfs-driver-tar-gzip-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-tar-xz/0.10.6/truevfs-driver-tar-xz-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-tar-xz/0.10.6/truevfs-driver-tar-xz-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/tukaani/xz/1.4/xz-1.4.jar" sourcepath="M2_REPO/org/tukaani/xz/1.4/xz-1.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-zip-raes/0.10.6/truevfs-driver-zip-raes-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-zip-raes/0.10.6/truevfs-driver-zip-raes-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-macosx/2.3.4/truecommons-key-macosx-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-macosx/2.3.4/truecommons-key-macosx-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/dev/jna/jna/4.0.0/jna-4.0.0.jar" sourcepath="M2_REPO/net/java/dev/jna/jna/4.0.0/jna-4.0.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-sfx/0.10.6/truevfs-driver-sfx-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-sfx/0.10.6/truevfs-driver-sfx-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-ext-insight/0.10.6/truevfs-ext-insight-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-ext-insight/0.10.6/truevfs-ext-insight-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-jmx/0.10.6/truevfs-comp-jmx-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-jmx/0.10.6/truevfs-comp-jmx-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-inst/0.10.6/truevfs-comp-inst-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-inst/0.10.6/truevfs-comp-inst-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-jmx/2.3.4/truecommons-jmx-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-jmx/2.3.4/truecommons-jmx-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-annotations/2.3.4/truecommons-annotations-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-annotations/2.3.4/truecommons-annotations-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-ext-logging/0.10.6/truevfs-ext-logging-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-ext-logging/0.10.6/truevfs-ext-logging-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-ext-pacemaker/0.10.6/truevfs-ext-pacemaker-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-ext-pacemaker/0.10.6/truevfs-ext-pacemaker-0.10.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-key-hurlfb/2.3.4/truecommons-key-hurlfb-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-key-hurlfb/2.3.4/truecommons-key-hurlfb-2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-dbcp/commons-dbcp/20030825.184428/commons-dbcp-20030825.184428.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/20030825.183949/commons-pool-20030825.183949.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/20040616/commons-collections-20040616.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-core/4.3.5.Final/hibernate-core-4.3.5.Final.jar" sourcepath="M2_REPO/org/hibernate/hibernate-core/4.3.5.Final/hibernate-core-4.3.5.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" sourcepath="M2_REPO/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar" sourcepath="M2_REPO/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar" sourcepath="M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" sourcepath="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" sourcepath="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar" sourcepath="M2_REPO/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" sourcepath="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar" sourcepath="M2_REPO/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-entitymanager/4.3.5.Final/hibernate-entitymanager-4.3.5.Final.jar" sourcepath="M2_REPO/org/hibernate/hibernate-entitymanager/4.3.5.Final/hibernate-entitymanager-4.3.5.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-c3p0/4.3.5.Final/hibernate-c3p0-4.3.5.Final.jar" sourcepath="M2_REPO/org/hibernate/hibernate-c3p0/4.3.5.Final/hibernate-c3p0-4.3.5.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/c3p0/0.9.2.1/c3p0-0.9.2.1.jar" sourcepath="M2_REPO/com/mchange/c3p0/0.9.2.1/c3p0-0.9.2.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mchange/mchange-commons-java/0.2.3.4/mchange-commons-java-0.2.3.4.jar" sourcepath="M2_REPO/com/mchange/mchange-commons-java/0.2.3.4/mchange-commons-java-0.2.3.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/weld/se/weld-se-core/2.0.3.Final/weld-se-core-2.0.3.Final.jar" sourcepath="M2_REPO/org/jboss/weld/se/weld-se-core/2.0.3.Final/weld-se-core-2.0.3.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/weld/weld-spi/2.0.SP1/weld-spi-2.0.SP1.jar" sourcepath="M2_REPO/org/jboss/weld/weld-spi/2.0.SP1/weld-spi-2.0.SP1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/weld/weld-api/2.0.SP1/weld-api-2.0.SP1.jar" sourcepath="M2_REPO/org/jboss/weld/weld-api/2.0.SP1/weld-api-2.0.SP1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/weld/weld-core-impl/2.0.3.Final/weld-core-impl-2.0.3.Final.jar" sourcepath="M2_REPO/org/jboss/weld/weld-core-impl/2.0.3.Final/weld-core-impl-2.0.3.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/classfilewriter/jboss-classfilewriter/1.0.4.Final/jboss-classfilewriter-1.0.4.Final.jar" sourcepath="M2_REPO/org/jboss/classfilewriter/jboss-classfilewriter/1.0.4.Final/jboss-classfilewriter-1.0.4.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Alpha1/jboss-annotations-api_1.2_spec-1.0.0.Alpha1.jar" sourcepath="M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Alpha1/jboss-annotations-api_1.2_spec-1.0.0.Alpha1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/1.0.0.Alpha1/jboss-el-api_3.0_spec-1.0.0.Alpha1.jar" sourcepath="M2_REPO/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/1.0.0.Alpha1/jboss-el-api_3.0_spec-1.0.0.Alpha1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Alpha3/jboss-interceptors-api_1.2_spec-1.0.0.Alpha3.jar" sourcepath="M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Alpha3/jboss-interceptors-api_1.2_spec-1.0.0.Alpha3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-ext/1.7.2/slf4j-ext-1.7.2.jar" sourcepath="M2_REPO/org/slf4j/slf4j-ext/1.7.2/slf4j-ext-1.7.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/cal10n/cal10n-api/0.7.7/cal10n-api-0.7.7.jar" sourcepath="M2_REPO/ch/qos/cal10n/cal10n-api/0.7.7/cal10n-api-0.7.7-sources.jar"/>
 </classpath>
