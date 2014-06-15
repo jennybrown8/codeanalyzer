@@ -5,6 +5,7 @@ import java.io.File;
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.filesystem.DirectoryWalker;
 import net.simsa.codeanalyzer.model.DebugStats;
+import net.simsa.codeanalyzer.model.EntityDAO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,13 +45,16 @@ public class Main {
 	} else {
 	    Main main = new Main(args[0]);
 	    try {
+		EntityDAO.getManager();
 		main.run();
 	    } catch (Exception e) {
-		if (e.getMessage().indexOf("Early exit") != -1) {
+		if (e.getMessage() != null && e.getMessage().indexOf("Early exit") != -1) {
 		    System.out.println(e.getMessage());
 		} else {
 		    e.printStackTrace();
 		}
+	    } finally {
+		EntityDAO.getManager().teardown();
 	    }
 	}
     }

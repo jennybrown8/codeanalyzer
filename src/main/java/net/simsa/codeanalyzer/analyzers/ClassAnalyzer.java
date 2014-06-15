@@ -30,7 +30,7 @@ public class ClassAnalyzer implements Analyzer {
 	try {
 	    log.debug("Processing class " + file.getAbsolutePath());
 	    stream = new TFileInputStream(file);
-	    ClassPrinter cp = new ClassPrinter();
+	    ClassEntityVisitor cp = new ClassEntityVisitor(file);
 	    ClassReader cr = new ClassReader(stream);
 	    cr.accept(cp, 0);
 	} finally {
@@ -38,9 +38,6 @@ public class ClassAnalyzer implements Analyzer {
 		stream.close();
 	    }
 	}
-	// TODO: Debug use - early abort while I'm coding it up so I don't spam myself.
-//	System.err.println("Exiting early for debugging purposes.");
-//	System.exit(1);
     }
 
     public static void main(String[] args) throws Exception {
