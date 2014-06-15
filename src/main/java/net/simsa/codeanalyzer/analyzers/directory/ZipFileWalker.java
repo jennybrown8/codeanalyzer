@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
@@ -17,17 +19,11 @@ public class ZipFileWalker implements Analyzer {
     static Logger log = LogManager.getLogger();
 
     AnalyzerFactory analyzers;
-    List<Object> entities;
-
+    EntityManager em;
     File file;
 
-    public ZipFileWalker() {
-	analyzers = new AnalyzerFactory();
-	entities = new ArrayList<Object>();
-    }
-
-    public List<Object> getEntities() {
-	return entities;
+    public ZipFileWalker(AnalyzerFactory factory, EntityManager em) {
+	this.em = em;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -50,7 +46,6 @@ public class ZipFileWalker implements Analyzer {
 	    Analyzer analyzer = analyzers.get(analyzers.getFileExtension(file.getName()), file.isDirectory());
 	    analyzer.setSource(file);
 	    analyzer.process();
-	    entities.addAll(analyzer.getEntities());
 	}
 
     }

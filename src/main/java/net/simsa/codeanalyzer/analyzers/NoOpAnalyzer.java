@@ -5,30 +5,33 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import net.java.truevfs.access.TFile;
 
 /** Does nothing with the file; silent skip. */
 public class NoOpAnalyzer implements Analyzer {
 
-	public boolean accepts(String path) {
-		return true;
-	}
-	public List<Object> getEntities() {
-	    return new ArrayList<Object>();
-	}
+    public NoOpAnalyzer(AnalyzerFactory factory, EntityManager em) {
 
-	public void setSource(TFile file) {
-	}
+    }
 
-	public void setSource(InputStream stream) {
+    public boolean accepts(String path) {
+	return true;
+    }
 
-	}
+    public void setSource(TFile file) {
+    }
 
-	public String getIdentity() {
-		return "SkipAnalyzer";
-	}
+    public void setSource(InputStream stream) {
 
-	public void process() throws IOException {
-	}
+    }
+
+    public String getIdentity() {
+	return "SkipAnalyzer";
+    }
+
+    public void process() throws IOException {
+    }
 
 }

@@ -3,9 +3,13 @@ package net.simsa.codeanalyzer.analyzers;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
 import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
 import net.simsa.codeanalyzer.analyzers.directory.ZipFileWalker;
-import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,22 +18,38 @@ public class AnalyzerFactory {
     Logger log = LogManager.getLogger();
 
     static String NULLEXTENSION = "NoExtension";
-    static int filesProcessed = 0;
+    
+    @Inject
+    EntityManager em;
 
     public AnalyzerFactory() {
+    }
+    
+    @PostConstruct
+    public void onPostConstruct() {
+	em.getTransaction().begin();
+    }
+    
+    public void commit() {
+	em.getTransaction().commit();
+    }
+    
+    @PreDestroy
+    public void onPreDestroy() {
+	em.close();
     }
 
     public Analyzer get(String extension, boolean isDirectory) {
 	if (isDirectory) {
-	    return new DirectoryWalker();
+	    return new DirectoryWalker(this, em);
 	} else if (extension.equals(NULLEXTENSION)) {
-	    return new NoOpAnalyzer();
+	    return new NoOpAnalyzer(this, em);
 	} else if (extension.equals("zip") || extension.equals("war") || extension.equals("jar")) {
-	    return new ZipFileWalker();
+	    return new ZipFileWalker(this, em);
 	} else if (extension.equals("class")) {
-	    return new ClassAnalyzer();
+	    return new ClassAnalyzer(this, em);
 	}
-	return new NoOpAnalyzer();
+	return new NoOpAnalyzer(this, em);
     }
 
     public String getFileExtension(File file) throws IOException {

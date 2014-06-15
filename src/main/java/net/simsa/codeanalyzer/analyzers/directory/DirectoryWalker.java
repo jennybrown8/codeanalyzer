@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
@@ -17,12 +19,12 @@ public class DirectoryWalker implements Analyzer {
 
     TFile directory;
     AnalyzerFactory analyzers;
-    List<Object> list;
+    
+    EntityManager em;
 
-
-    public DirectoryWalker() {
-	analyzers = new AnalyzerFactory();
-	list = new ArrayList<Object>();
+    public DirectoryWalker(AnalyzerFactory analyzers, EntityManager em) {
+	this.analyzers = analyzers;
+	this.em = em;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -33,10 +35,6 @@ public class DirectoryWalker implements Analyzer {
 	return "DirectoryWalker";
     }
 
-    public List<Object> getEntities() {
-	return list;
-    }
-    
     /**
      * For the specified directory, iterates the files, and makes recursive call
      * for any directories
@@ -44,7 +42,7 @@ public class DirectoryWalker implements Analyzer {
     public void process() throws IOException {
 	TFile[] files = directory.listFiles();
 	for (TFile file : files) {
-	    log.info("Located " + file.getCanonicalPath());
+	    log.debug("Located " + file.getCanonicalPath());
 	    
 	    DebugStats.record(analyzers.getFileExtension(file));
 	    if (DebugStats.shouldEarlyExit()) { return; }
@@ -52,7 +50,6 @@ public class DirectoryWalker implements Analyzer {
 	    Analyzer analyzer = analyzers.get(analyzers.getFileExtension(file), file.isDirectory());
 	    analyzer.setSource(file);
 	    analyzer.process();
-	    list.addAll(analyzer.getEntities());
 	}
 
     }

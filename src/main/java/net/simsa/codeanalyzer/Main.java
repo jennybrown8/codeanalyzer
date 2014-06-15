@@ -1,23 +1,9 @@
 package net.simsa.codeanalyzer;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
-import net.simsa.codeanalyzer.model.DebugStats;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jboss.weld.environment.se.StartMain;
-import org.jboss.weld.environment.se.bindings.Parameters;
-import org.jboss.weld.environment.se.events.ContainerInitialized;
+import org.apache.logging.log4j.core.config.Configurator;
 
 /**
  * Wrapper entry point to enable CDI initialization 
@@ -28,6 +14,7 @@ public class Main extends StartMain {
 	super(commandLineArgs);
     }
 
+    /** Transfers control to ApplicationMain */
     public void init(String[] args) {
 	super.main(args);
     }
@@ -36,8 +23,9 @@ public class Main extends StartMain {
 	if (args.length < 1) {
 	    System.out.println("Usage: net.simsa.codeanalyzer.Main path/to/directory/with/war");
 	} else {
-	    Main me = new Main(args);
-	    me.init(args);
+	    Main main = new Main(args);
+	    main.init(args);
+	    LogManager.getLogger().warn("Complete.");
 	}
     }
 }

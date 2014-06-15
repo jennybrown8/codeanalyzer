@@ -18,6 +18,4 @@ public interface Analyzer {
      */
     public void process() throws IOException;
 
-    public List<Object> getEntities();
-    
 }

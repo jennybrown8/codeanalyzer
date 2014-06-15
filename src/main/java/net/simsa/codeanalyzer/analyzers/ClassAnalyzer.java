@@ -1,8 +1,9 @@
 package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 import net.java.truevfs.access.TFile;
 import net.java.truevfs.access.TFileInputStream;
@@ -15,17 +16,13 @@ public class ClassAnalyzer implements Analyzer {
     Logger log = LogManager.getLogger();
 
     private TFile file;
-    
-    ClassEntityVisitor cev;
 
-    public ClassAnalyzer() {
-	cev = new ClassEntityVisitor();
-    }
+    AnalyzerFactory factory;
+    EntityManager em;
 
-    public List<Object> getEntities() {
-	List<Object> list = new ArrayList<Object>();
-	list.addAll(cev.getEntities());
-	return list;
+    public ClassAnalyzer(AnalyzerFactory factory, EntityManager em) {
+	this.factory = factory;
+	this.em = em;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -37,6 +34,8 @@ public class ClassAnalyzer implements Analyzer {
     }
 
     public void process() throws IOException {
+	ClassEntityVisitor cev = new ClassEntityVisitor();
+
 	TFileInputStream stream = null;
 	try {
 	    log.debug("Processing class " + file.getAbsolutePath());
@@ -44,12 +43,12 @@ public class ClassAnalyzer implements Analyzer {
 	    cev.setFile(file);
 	    ClassReader cr = new ClassReader(stream);
 	    cr.accept(cev, 0);
+	    em.persist(cev.getJClass());
 	} finally {
 	    if (stream != null) {
 		stream.close();
 	    }
 	}
     }
-
 
 }

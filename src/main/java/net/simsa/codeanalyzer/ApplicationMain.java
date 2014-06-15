@@ -1,13 +1,15 @@
 package net.simsa.codeanalyzer;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import net.java.truevfs.access.TFile;
+import net.simsa.codeanalyzer.analyzers.Analyzer;
+import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
 import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
 import net.simsa.codeanalyzer.model.DebugStats;
 
@@ -24,17 +26,19 @@ import org.jboss.weld.environment.se.events.ContainerInitialized;
  * Next, need to find a way to stream my object updates to hibernate instead
  * of hanging on until the entire tree recursion is finished.
  * 
+ * This might be a job for an event producer and an event consumer.
+ * 
  * @author jenny
  * 
  */
 public class ApplicationMain {
-    static Logger log = LogManager.getLogger();
+    Logger log = LogManager.getLogger();
 
     String datadirPath;
     TFile datadir;
-
+    
     @Inject
-    EntityManager em;
+    AnalyzerFactory analyzerFactory;
 
     public ApplicationMain() {
     }
@@ -47,8 +51,6 @@ public class ApplicationMain {
 	    run();
 	} catch (Exception e) {
 	    e.printStackTrace();
-	} finally {
-	    em.close();
 	}
 
     }
@@ -62,20 +64,12 @@ public class ApplicationMain {
 	    throw new IllegalArgumentException("There are no files in the directory to process.");
 	}
 
-	DirectoryWalker dirWalker = new DirectoryWalker();
+	Analyzer dirWalker = analyzerFactory.get(null, true);
 	dirWalker.setSource(datadir);
-
 	try {
 	    dirWalker.process();
+	    analyzerFactory.commit();
 	} finally {
-	    em.getTransaction().begin();
-
-	    // it's ugly to try to hold all the objects in memory at once.
-	    List<Object> entities = dirWalker.getEntities();
-	    for (Object o : entities) {
-		em.persist(o);
-	    }
-	    em.getTransaction().commit();
 	    DebugStats.display();
 	}
 
