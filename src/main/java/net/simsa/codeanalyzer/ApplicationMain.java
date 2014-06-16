@@ -9,7 +9,7 @@ import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
 import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
-import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
+import net.simsa.codeanalyzer.analyzers.RelationshipDbUpdater;
 import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +36,9 @@ public class ApplicationMain {
 
     @Inject
     BatchEntityPersister batch;
+    
+    @Inject
+    RelationshipDbUpdater dbUpdater;
 
     public ApplicationMain() {
     }
@@ -64,8 +67,14 @@ public class ApplicationMain {
 	Analyzer dirWalker = new AnalyzerFactory(batch).getDirectoryWalker();
 	dirWalker.setSource(datadir);
 	try {
+	    // Walk every jar/war starting in this directory, creating entities as we go.
 	    dirWalker.process();
+	    
+	    // The batch entity saving may have an incomplete batch in the final set, so save those.
 	    batch.completeFinalSave();
+
+	    // Fill in relational information in bulk without overhead of entity traversal.
+	    dbUpdater.run();
 	} finally {
 	    DebugStats.display();
 	}

@@ -2,6 +2,7 @@
 <classpath>
   <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="target/generated-sources/java" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar">
@@ -25,7 +26,7 @@
   <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-shed/2.3.4/truecommons-shed-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-shed/2.3.4/truecommons-shed-2.3.4-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-services/2.3.4/truecommons-services-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-services/2.3.4/truecommons-services-2.3.4-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/java/truecommons/truecommons-logging/2.3.4/truecommons-logging-2.3.4.jar" sourcepath="M2_REPO/net/java/truecommons/truecommons-logging/2.3.4/truecommons-logging-2.3.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-access-swing/0.10.6/truevfs-access-swing-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-access-swing/0.10.6/truevfs-access-swing-0.10.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-driver-jar/0.10.6/truevfs-driver-jar-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-driver-jar/0.10.6/truevfs-driver-jar-0.10.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/java/truevfs/truevfs-comp-zipdriver/0.10.6/truevfs-comp-zipdriver-0.10.6.jar" sourcepath="M2_REPO/net/java/truevfs/truevfs-comp-zipdriver/0.10.6/truevfs-comp-zipdriver-0.10.6-sources.jar"/>
@@ -92,6 +93,32 @@
   <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/1.0.0.Alpha1/jboss-el-api_3.0_spec-1.0.0.Alpha1.jar" sourcepath="M2_REPO/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/1.0.0.Alpha1/jboss-el-api_3.0_spec-1.0.0.Alpha1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Alpha3/jboss-interceptors-api_1.2_spec-1.0.0.Alpha3.jar" sourcepath="M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Alpha3/jboss-interceptors-api_1.2_spec-1.0.0.Alpha3-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-ext/1.7.2/slf4j-ext-1.7.2.jar" sourcepath="M2_REPO/org/slf4j/slf4j-ext/1.7.2/slf4j-ext-1.7.2-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/ch/qos/cal10n/cal10n-api/0.7.7/cal10n-api-0.7.7.jar" sourcepath="M2_REPO/ch/qos/cal10n/cal10n-api/0.7.7/cal10n-api-0.7.7-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-ext/1.7.7/slf4j-ext-1.7.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/cal10n/cal10n-api/0.8.1/cal10n-api-0.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-jpa/3.3.4/querydsl-jpa-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-core/3.3.4/querydsl-core-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib/2.2.2/cglib-2.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/asm/asm/3.3.1/asm-3.3.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/infradna/tool/bridge-method-annotation/1.11/bridge-method-annotation-1.11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-hibernate-search/3.3.4/querydsl-hibernate-search-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-lucene3/3.3.4/querydsl-lucene3-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-apt/3.3.4/querydsl-apt-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-codegen/3.3.4/querydsl-codegen-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/codegen/codegen/0.6.2/codegen-0.6.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar" sourcepath="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/maven/repository/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar" sourcepath="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/maven/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-jpa-codegen/3.3.4/querydsl-jpa-codegen-3.3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-hql/1.9.7/querydsl-hql-1.9.7.jar"/>
 </classpath>
