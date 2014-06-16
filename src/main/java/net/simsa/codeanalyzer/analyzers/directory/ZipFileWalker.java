@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
+import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
 import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,11 +20,11 @@ public class ZipFileWalker implements Analyzer {
     static Logger log = LogManager.getLogger();
 
     AnalyzerFactory analyzers;
-    EntityManager em;
+    BatchEntityPersister batch;
     File file;
 
-    public ZipFileWalker(AnalyzerFactory factory, EntityManager em) {
-	this.em = em;
+    public ZipFileWalker(AnalyzerFactory factory, BatchEntityPersister batch) {
+	this.batch = batch;
     }
 
     public void setSource(TFile file) throws IOException {

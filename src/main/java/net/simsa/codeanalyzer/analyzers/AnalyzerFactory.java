@@ -17,39 +17,29 @@ import org.apache.logging.log4j.Logger;
 public class AnalyzerFactory {
     Logger log = LogManager.getLogger();
 
-    static String NULLEXTENSION = "NoExtension";
-    
-    @Inject
-    EntityManager em;
+    public static String NULLEXTENSION = "NoExtension";
 
-    public AnalyzerFactory() {
+    BatchEntityPersister batch;
+
+    public AnalyzerFactory(BatchEntityPersister batch) {
+	this.batch = batch;
     }
     
-    @PostConstruct
-    public void onPostConstruct() {
-	em.getTransaction().begin();
-    }
-    
-    public void commit() {
-	em.getTransaction().commit();
-    }
-    
-    @PreDestroy
-    public void onPreDestroy() {
-	em.close();
+    public DirectoryWalker getDirectoryWalker() {
+	return new DirectoryWalker(this, batch);
     }
 
     public Analyzer get(String extension, boolean isDirectory) {
 	if (isDirectory) {
-	    return new DirectoryWalker(this, em);
+	    return new DirectoryWalker(this, batch);
 	} else if (extension.equals(NULLEXTENSION)) {
-	    return new NoOpAnalyzer(this, em);
+	    return new NoOpAnalyzer(this, batch);
 	} else if (extension.equals("zip") || extension.equals("war") || extension.equals("jar")) {
-	    return new ZipFileWalker(this, em);
+	    return new ZipFileWalker(this, batch);
 	} else if (extension.equals("class")) {
-	    return new ClassAnalyzer(this, em);
+	    return new ClassAnalyzer(this, batch);
 	}
-	return new NoOpAnalyzer(this, em);
+	return new NoOpAnalyzer(this, batch);
     }
 
     public String getFileExtension(File file) throws IOException {

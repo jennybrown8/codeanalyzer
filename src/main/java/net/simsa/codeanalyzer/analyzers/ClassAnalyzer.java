@@ -18,11 +18,11 @@ public class ClassAnalyzer implements Analyzer {
     private TFile file;
 
     AnalyzerFactory factory;
-    EntityManager em;
+    BatchEntityPersister batch;
 
-    public ClassAnalyzer(AnalyzerFactory factory, EntityManager em) {
+    public ClassAnalyzer(AnalyzerFactory factory, BatchEntityPersister batch) {
 	this.factory = factory;
-	this.em = em;
+	this.batch = batch;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -43,7 +43,7 @@ public class ClassAnalyzer implements Analyzer {
 	    cev.setFile(file);
 	    ClassReader cr = new ClassReader(stream);
 	    cr.accept(cev, 0);
-	    em.persist(cev.getJClass());
+	    batch.add(cev.getJClass());
 	} finally {
 	    if (stream != null) {
 		stream.close();

@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
+import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
 import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,11 +21,11 @@ public class DirectoryWalker implements Analyzer {
     TFile directory;
     AnalyzerFactory analyzers;
     
-    EntityManager em;
+    BatchEntityPersister batch;
 
-    public DirectoryWalker(AnalyzerFactory analyzers, EntityManager em) {
+    public DirectoryWalker(AnalyzerFactory analyzers, BatchEntityPersister batch) {
 	this.analyzers = analyzers;
-	this.em = em;
+	this.batch = batch;
     }
 
     public void setSource(TFile file) throws IOException {
@@ -34,7 +35,7 @@ public class DirectoryWalker implements Analyzer {
     public String getIdentity() {
 	return "DirectoryWalker";
     }
-
+    
     /**
      * For the specified directory, iterates the files, and makes recursive call
      * for any directories

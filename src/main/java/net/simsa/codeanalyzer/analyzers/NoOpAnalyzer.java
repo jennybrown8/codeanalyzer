@@ -12,7 +12,7 @@ import net.java.truevfs.access.TFile;
 /** Does nothing with the file; silent skip. */
 public class NoOpAnalyzer implements Analyzer {
 
-    public NoOpAnalyzer(AnalyzerFactory factory, EntityManager em) {
+    public NoOpAnalyzer(AnalyzerFactory factory, BatchEntityPersister batch) {
 
     }
 
