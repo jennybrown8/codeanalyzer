@@ -1,5 +1,9 @@
 package net.simsa.codeanalyzer.model;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -18,7 +22,12 @@ public class Factory {
     
     @Produces
     public static EntityManagerFactory createEntityManagerFactory() {
-	return Persistence.createEntityManagerFactory("net.simsa.codeanalyzer.PU");
+	Map<String, String> properties = new HashMap<String, String>();
+	ResourceBundle propsFile = ResourceBundle.getBundle("db");
+	for (String key : propsFile.keySet()) {
+	    properties.put(key, propsFile.getString(key));
+	}
+	return Persistence.createEntityManagerFactory("net.simsa.codeanalyzer.PU", properties);
     }
     
 }

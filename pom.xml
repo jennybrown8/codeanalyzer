@@ -179,19 +179,47 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>appassembler-maven-plugin</artifactId>
+					<version>1.8</version>
 					<configuration>
-						<archive>
-							<manifest>
+						<configurationDirectory>conf</configurationDirectory>
+						<copyConfigurationDirectory>true</copyConfigurationDirectory>
+						<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+						<extraJvmArguments>-Xms64m</extraJvmArguments>
+						<platforms>
+							<platform>windows</platform>
+							<platform>unix</platform>
+						</platforms>
+						<programs>
+							<program>
 								<mainClass>net.simsa.codeanalyzer.Main</mainClass>
-							</manifest>
-						</archive>
+								<id>analyze</id>
+							</program>
+						</programs>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/config</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
+
+	<pluginRepositories>
+	</pluginRepositories>
 
 </project>

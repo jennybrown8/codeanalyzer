@@ -1,0 +1,11 @@
+Full compile plus produce distribution shell script with classpath and dependencies:
+mvn package appassembler:assemble
+
+Results are in target/appassembler/
+
+Configuration:
+./target/appassembler/conf/db.properties
+
+Usage:
+./target/appassembler/bin/analyze /path/to/your/war/directory
+
