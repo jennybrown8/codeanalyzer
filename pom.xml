@@ -87,5 +87,10 @@
 			<version>2.0-rc1</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-ext</artifactId>
+			<version>1.7.7</version>
+		</dependency>
 	</dependencies>
 </project>

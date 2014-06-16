@@ -2,15 +2,14 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 	<appenders>
 		<Console name="console" target="SYSTEM_OUT">
-			<PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+			<PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
 		</Console>
 	</appenders>
 	<loggers>
 		<logger name="com.mchange" level="warn" />
 		<logger name="net.java.truevfs" level="warn" />
 		<logger name="net.java.truecommons" level="warn" />
-		<logger name="org.jboss.weld.Bootstrap" level="info" />
-		<logger name="org.jboss.weld.Version" level="info" />
+		<logger name="org.jboss.weld" level="debug" />
 		<logger name="org.hibernate" level="warn" />
 		<logger name="org.hibernate.SQL" level="info" />
 		<logger name="org.hibernate.type" level="info" />
