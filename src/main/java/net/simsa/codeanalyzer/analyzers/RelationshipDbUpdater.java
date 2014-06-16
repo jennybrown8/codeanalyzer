@@ -14,12 +14,24 @@ public class RelationshipDbUpdater {
 
     }
 
-    public void run() {
+    /**
+     * Re-clean the database for the next run
+     */
+    public void before() {
+	em.getTransaction().begin();
+	em.createNativeQuery("delete from JClass").executeUpdate();
+	em.getTransaction().commit();
+
+    }
+
+    /*
+     *  After entities are created, this builds relationships between then using bulk updates. 
+     */
+    public void after() {
 	em.getTransaction().begin();
 	em.createNativeQuery(
-		"update JClass join JClass JClassChild on JClassChild.superclassName = JClass.fullyQualifiedName " +
-		"set JClassChild.superclassId = JClass.id")
-		.executeUpdate();
+		"update JClass join JClass JClassChild on JClassChild.superclassName = JClass.fullyQualifiedName "
+			+ "set JClassChild.superclassId = JClass.id").executeUpdate();
 	em.getTransaction().commit();
     }
 

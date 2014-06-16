@@ -67,6 +67,9 @@ public class ApplicationMain {
 	Analyzer dirWalker = new AnalyzerFactory(batch).getDirectoryWalker();
 	dirWalker.setSource(datadir);
 	try {
+	    // Clean the database in preparation.
+	    dbUpdater.before();
+	    
 	    // Walk every jar/war starting in this directory, creating entities as we go.
 	    dirWalker.process();
 	    
@@ -74,7 +77,7 @@ public class ApplicationMain {
 	    batch.completeFinalSave();
 
 	    // Fill in relational information in bulk without overhead of entity traversal.
-	    dbUpdater.run();
+	    dbUpdater.after();
 	} finally {
 	    DebugStats.display();
 	}
