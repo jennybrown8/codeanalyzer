@@ -22,6 +22,7 @@ Install and Run from Eclipse:
    a PersistenceUnit and connecting to your database.
 7. Then you should see the application take over:
 
+
      02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
@@ -52,6 +53,7 @@ Install and Run from Command Line:
 6. You should see log4j and weld initializing in the console, and then Hibernate creating 
    a PersistenceUnit and connecting to your database.
 7. Then you should see the application take over:
+
 
      02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
