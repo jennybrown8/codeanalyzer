@@ -11,7 +11,9 @@ fast, easy querying of code structure relationships, size of packages and depend
 
 Install and Run from Eclipse:
 -----------------------------
-1. Use git clone, grab the code, import into Eclipse as existing maven project. If necessary, run:  mvn eclipse:eclipse 
+1. Use git clone, grab the code, import into Eclipse as existing maven project.
+   To create generated sources (QueryDSL), run:  mvn process-sources
+   If necessary, also run:  mvn eclipse:eclipse 
 2. Create a mysql database schema and user. Defaults are in db.properties.
 3. Run 000-create.sql against that schema so the tables are created.
 4. Choose a war file to work with. Create an empty directory somewhere, put it in there, and note the path to the directory.
