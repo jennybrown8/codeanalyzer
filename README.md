@@ -4,6 +4,9 @@ codeanalyzer
 Code Analyzer looks at a large code base (especially Java) and produces statistics about what's in it.  Its purpose is to enable
 fast, easy querying of code structure relationships, size of packages and dependencies, and other relationships.
 
+Eventual goals include automatic visualization of useful statistics.  For now the focus is simply on retrieving 
+the code base structural information and saving it in a database, where it can be easily queried. 
+
 * Install and Run from Eclipse
 * Install and Run from Command Line
 
