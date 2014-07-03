@@ -28,6 +28,16 @@ CREATE TABLE `codeanalyzer`.`JInterface` (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE `codeanalyzer`.`JClassImplementsJInterface` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `jclass_id` INTEGER UNSIGNED NOT NULL,
+  `interfaceName` VARCHAR(250) NOT NULL,
+  `jinterface_id` INTEGER UNSIGNED,
+  PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB;
+
+
 -- Verify index length vs field length for text columns.
 -- Plan out how I'm going to make a second pass over the table to build normalized data for packages/etc
 

@@ -39,6 +39,7 @@ public class ClassEntityVisitor extends ClassVisitor {
 	jclass.setSuperclassName(superName);
 	jclass.setPackageName(name.substring(0, name.lastIndexOf("/")));
 	jclass.setOrganization(name.substring(0, name.indexOf("/", name.indexOf("/")+1)));
+	jclass.setInterfaces(interfaces);
     }
 
     public void visitSource(String source, String debug) {

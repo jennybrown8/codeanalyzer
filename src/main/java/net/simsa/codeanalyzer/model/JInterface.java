@@ -1,23 +1,15 @@
 package net.simsa.codeanalyzer.model;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- * Models a class and what we know about it from binary/source analysis
- * 
- */
 @Entity
-public class JClass {
+public class JInterface {
     
     Integer id;
     String fullyQualifiedName;
@@ -29,14 +21,6 @@ public class JClass {
     String organization;
     String superclassName;
     Integer superclassId;
-    
-    String[] interfaces;
-
-    Set<JClassImplementsJInterface> implementedInterfaces;
-    
-    public JClass() {
-	implementedInterfaces = new LinkedHashSet<JClassImplementsJInterface>();
-    }
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -55,16 +39,6 @@ public class JClass {
 
     public void setFullyQualifiedName(String fullyQualifiedName) {
 	this.fullyQualifiedName = fullyQualifiedName;
-    }
-    
-    public void setInterfaces(String[] interfaces) {
-	this.interfaces = interfaces;
-	for (String s : interfaces) {
-	    JClassImplementsJInterface relation = new JClassImplementsJInterface();
-	    relation.setJClass(this);
-	    relation.setInterfaceName(s);
-	    implementedInterfaces.add(relation);
-	}
     }
 
     public String getSimpleName() {
@@ -129,15 +103,6 @@ public class JClass {
 
     public void setSuperclassId(Integer superclassId) {
 	this.superclassId = superclassId;
-    }
-
-    @OneToMany(mappedBy="JClass", cascade=CascadeType.ALL)
-    public Set<JClassImplementsJInterface> getImplementedInterfaces() {
-        return implementedInterfaces;
-    }
-
-    public void setImplementedInterfaces(Set<JClassImplementsJInterface> implementedInterfaces) {
-        this.implementedInterfaces = implementedInterfaces;
     }
 
 }

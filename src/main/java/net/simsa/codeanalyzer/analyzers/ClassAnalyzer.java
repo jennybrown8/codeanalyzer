@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import net.java.truevfs.access.TFile;
 import net.java.truevfs.access.TFileInputStream;
+import net.simsa.codeanalyzer.model.JClassImplementsJInterface;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -19,6 +19,8 @@ public class RelationshipDbUpdater {
      */
     public void before() {
 	em.getTransaction().begin();
+	em.createNativeQuery("delete from JInterface").executeUpdate();
+	em.createNativeQuery("delete from JClassImplementsJInterface").executeUpdate();
 	em.createNativeQuery("delete from JClass").executeUpdate();
 	em.getTransaction().commit();
 
