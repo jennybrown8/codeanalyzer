@@ -22,23 +22,23 @@ Install and Run from Eclipse:
    a PersistenceUnit and connecting to your database.
 7. Then you should see the application take over:
 
-02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 300 files.
-...
+     02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 300 files.
+     ...
 
-8. After it completes, it will print summary statistics of the types of files it saw.
+After it completes, it will print summary statistics of the types of files it saw.
 
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - js  28
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - class   2245
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - xml 18
-...
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - js  28
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - class   2245
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - xml 18
+     ...
 
-8. At this point you should see persisted rows in the database and can use the queries 
+At this point you should see persisted rows in the database and can use the queries 
 in sql/sample_queries.sql (or your own custom queries) to run basic statistics.
 
-9. If you re-run the application, it will delete the data in the database and start fresh.
+If you re-run the application, it will delete the data in the database and start fresh.
 
 
 Install and Run from Command Line:
@@ -53,20 +53,20 @@ Install and Run from Command Line:
    a PersistenceUnit and connecting to your database.
 7. Then you should see the application take over:
 
-02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
-02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 300 files.
-...
+     02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
+     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 300 files.
+     ...
 
-8. After it completes, it will print summary statistics of the types of files it saw.
+After it completes, it will print summary statistics of the types of files it saw.
 
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - js  28
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - class   2245
-02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - xml 18
-...
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - js  28
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - class   2245
+     02 Jul 2014 19:13:22 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - xml 18
+     ...
 
-8. At this point you should see persisted rows in the database and can use the queries 
+At this point you should see persisted rows in the database and can use the queries 
 in sql/sample_queries.sql (or your own custom queries) to run basic statistics.
 
-9. If you re-run the application, it will delete the data in the database and start fresh.
+If you re-run the application, it will delete the data in the database and start fresh.
