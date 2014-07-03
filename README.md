@@ -9,7 +9,7 @@ fast, easy querying of code structure relationships, size of packages and depend
 
 
 
-Install and Run from Eclipse:
+Install and Run from Eclipse
 -----------------------------
 1. Use git clone, grab the code, import into Eclipse as existing maven project.
    To create generated sources (QueryDSL), run:  mvn process-sources
@@ -44,7 +44,7 @@ in sql/sample_queries.sql (or your own custom queries) to run basic statistics.
 If you re-run the application, it will delete the data in the database and start fresh.
 
 
-Install and Run from Command Line:
+Install and Run from Command Line
 ----------------------------------
 1. If not already built, build using maven:  mvn package appassembler:assemble
 2. Create a mysql database schema and user. Defaults are in db.properties which ends up in the target/appassembler/conf directory.
