@@ -20,9 +20,9 @@ Install and Run from Eclipse:
 5. Run "Main" giving it a command line argument of the path to the directory.
 6. You should see log4j and weld initializing in the console, and then Hibernate creating 
    a PersistenceUnit and connecting to your database.
-7. Then you should see the application take over:
+7. Then you should see the application take over.
 
-
+     ...
      02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
@@ -46,15 +46,15 @@ Install and Run from Command Line:
 ----------------------------------
 1. If not already built, build using maven:  mvn package appassembler:assemble
 2. Create a mysql database schema and user. Defaults are in db.properties which ends up in the target/appassembler/conf directory.
-3. 2. Run 000-create.sql against that schema so the tables are created.
+3. Run 000-create.sql against that schema so the tables are created.
 4. Choose a war file to work with. Create an empty directory somewhere, put it in there, and note the path to the directory.
 5. Run the script: target/appassembler/bin/analyze  (or analyze.bat on Windows)
 
 6. You should see log4j and weld initializing in the console, and then Hibernate creating 
    a PersistenceUnit and connecting to your database.
-7. Then you should see the application take over:
+7. Then you should see the application take over.
 
-
+     ...
      02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
      02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 200 files.
