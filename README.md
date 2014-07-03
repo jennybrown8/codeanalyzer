@@ -23,6 +23,7 @@ Install and Run from Eclipse:
 7. Then you should see the application take over.
 
 Console:
+
     ...
     02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
@@ -56,6 +57,7 @@ Install and Run from Command Line:
 7. Then you should see the application take over.
 
 Console:
+
     ...
     02 Jul 2014 19:13:14 [main] WARN  net.simsa.codeanalyzer.ApplicationMain - Beginning
     02 Jul 2014 19:13:15 [main] INFO  net.simsa.codeanalyzer.model.DebugStats - Processed 100 files.
