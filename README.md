@@ -10,6 +10,10 @@ the code base structural information and saving it in a database, where it can b
 * Install and Run from Eclipse
 * Install and Run from Command Line
 
+See docs/ for more details.
+
+For now this is an entirely exploratory code base, not meant for the long-term.  There will be a much
+more complex data processing pipeline eventually feeding into a 3D visualization.
 
 
 Install and Run from Eclipse
