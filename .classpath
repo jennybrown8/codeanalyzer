@@ -6,11 +6,7 @@
   <classpathentry kind="src" path="src/main/resources" including="**/*.xml" excluding="**/*.java"/>
   <classpathentry kind="src" path="src/main/config" including="**/*.properties" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
-  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/C:/maven/repository/javax/inject/javax.inject/1/javax.inject-1-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar"></classpathentry>
   <classpathentry kind="var" path="M2_REPO/javax/enterprise/cdi-api/1.1/cdi-api-1.1.jar" sourcepath="M2_REPO/javax/enterprise/cdi-api/1.1/cdi-api-1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar" sourcepath="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0-sources.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -110,16 +106,8 @@
   <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-apt/3.3.4/querydsl-apt-3.3.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-codegen/3.3.4/querydsl-codegen-3.3.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/mysema/codegen/codegen/0.6.2/codegen-0.6.2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar" sourcepath="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/C:/maven/repository/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar" sourcepath="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/C:/maven/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar" sourcepath="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2-sources.jar"></classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar" sourcepath="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final-sources.jar"></classpathentry>
   <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-jpa-codegen/3.3.4/querydsl-jpa-codegen-3.3.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-hql/1.9.7/querydsl-hql-1.9.7.jar"/>
 </classpath>

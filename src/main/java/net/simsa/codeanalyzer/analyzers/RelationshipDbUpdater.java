@@ -3,8 +3,6 @@ package net.simsa.codeanalyzer.analyzers;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import net.simsa.codeanalyzer.model.QJClass;
-
 public class RelationshipDbUpdater {
 
     @Inject

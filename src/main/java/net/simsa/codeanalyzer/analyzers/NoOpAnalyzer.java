@@ -2,10 +2,6 @@ package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import net.java.truevfs.access.TFile;
 

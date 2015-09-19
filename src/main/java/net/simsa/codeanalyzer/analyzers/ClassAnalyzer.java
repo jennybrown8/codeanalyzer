@@ -2,16 +2,12 @@ package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
-import net.java.truevfs.access.TFile;
-import net.java.truevfs.access.TFileInputStream;
-import net.simsa.codeanalyzer.model.JClassImplementsJInterface;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassReader;
+
+import net.java.truevfs.access.TFile;
+import net.java.truevfs.access.TFileInputStream;
 
 public class ClassAnalyzer implements Analyzer {
     Logger log = LogManager.getLogger();

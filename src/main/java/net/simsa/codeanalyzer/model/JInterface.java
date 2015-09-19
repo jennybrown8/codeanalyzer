@@ -1,7 +1,5 @@
 package net.simsa.codeanalyzer.model;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

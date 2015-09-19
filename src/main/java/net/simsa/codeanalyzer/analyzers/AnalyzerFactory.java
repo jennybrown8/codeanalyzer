@@ -3,16 +3,11 @@ package net.simsa.codeanalyzer.analyzers;
 import java.io.File;
 import java.io.IOException;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
 import net.simsa.codeanalyzer.analyzers.directory.ZipFileWalker;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class AnalyzerFactory {
     Logger log = LogManager.getLogger();

@@ -2,19 +2,15 @@ package net.simsa.codeanalyzer.analyzers.directory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.EntityManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.java.truevfs.access.TFile;
 import net.simsa.codeanalyzer.analyzers.Analyzer;
 import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
 import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
 import net.simsa.codeanalyzer.model.DebugStats;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ZipFileWalker implements Analyzer {
     static Logger log = LogManager.getLogger();

@@ -1,7 +1,6 @@
 package net.simsa.codeanalyzer.analyzers;
 
 import java.io.IOException;
-import java.util.List;
 
 import net.java.truevfs.access.TFile;
 

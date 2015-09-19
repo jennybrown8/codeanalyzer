@@ -1,9 +1,7 @@
 package net.simsa.codeanalyzer;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jboss.weld.environment.se.StartMain;
-import org.apache.logging.log4j.core.config.Configurator;
 
 /**
  * Wrapper entry point to enable CDI initialization 
