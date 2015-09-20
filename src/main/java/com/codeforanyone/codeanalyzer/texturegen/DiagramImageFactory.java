@@ -8,24 +8,34 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DiagramImageFactory {
+    
+    String outputDir;
 
-    public DiagramImageFactory() throws IOException {
+    public DiagramImageFactory(String outputDir) {
+	this.outputDir = outputDir;
+	
 	System.setProperty("java.awt.headless", "true");
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	boolean headless_check = ge.isHeadless();
 	// System.out.println("Is headless? " + headless_check);
 
-	File outputDir = new File("target/images");
-	if (!outputDir.exists()) {
-	    boolean made = outputDir.mkdir();
+	File outputDirF = new File(outputDir);
+	String path = null;
+	try {
+	    path = outputDirF.getCanonicalPath();
+	} catch (IOException io) {
+	    throw new RuntimeException(io);
+	}
+
+	if (!outputDirF.exists()) {
+	    boolean made = outputDirF.mkdir();
 	    if (!made) {
 		throw new RuntimeException("Could not mkdir target/images/ - check permissions.");
 	    }
 	}
-	if (!outputDir.canWrite()) {
-	    throw new RuntimeException(
-		    "Cannot write to output dir " + outputDir.getCanonicalPath() + " - check permissions.");
+	if (!outputDirF.canWrite()) {
+	    throw new RuntimeException("Cannot write to output dir " + path + " - check permissions.");
 	}
     }
 
@@ -34,7 +44,7 @@ public class DiagramImageFactory {
 	for (String method : methods) {
 	    box.add(method);
 	}
-	box.saveCanvas("target/images/" + box.getSuggestedFilename());
+	box.saveCanvas(outputDir + "/" + box.getSuggestedFilename());
     }
 
     private void createTestPic() {
@@ -45,7 +55,7 @@ public class DiagramImageFactory {
     }
 
     public static void main(String[] args) throws Exception {
-	DiagramImageFactory dif = new DiagramImageFactory();
+	DiagramImageFactory dif = new DiagramImageFactory("target/test-images");
 	dif.createTestPic();
 	System.out.println("Done");
     }

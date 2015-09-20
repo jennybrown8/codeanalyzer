@@ -1,11 +1,10 @@
 package com.codeforanyone.codeanalyzer;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-
-import net.java.truevfs.access.TFile;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +16,9 @@ import com.codeforanyone.codeanalyzer.analyzers.AnalyzerFactory;
 import com.codeforanyone.codeanalyzer.analyzers.BatchEntityPersister;
 import com.codeforanyone.codeanalyzer.analyzers.RelationshipDbUpdater;
 import com.codeforanyone.codeanalyzer.model.DebugStats;
+import com.codeforanyone.codeanalyzer.texturegen.DiagramImageFactory;
+
+import net.java.truevfs.access.TFile;
 
 /**
  * Destination entry point after CDI initializes, and the application's main
@@ -25,6 +27,8 @@ import com.codeforanyone.codeanalyzer.model.DebugStats;
  * Injection and hibernate are working, including JClass entity persistence.
  * Next, need to find a way to stream my object updates to hibernate instead of
  * hanging on until the entire tree recursion is finished.
+ * 
+ * See run() method (very bottom) for overall processing pipeline control.
  * 
  * @author jenny
  * 
@@ -56,8 +60,7 @@ public class ApplicationMain {
 
     }
 
-    public void run() throws Exception {
-	log.warn("Beginning");
+    private void ingestSourceCodeToDb() throws IOException {
 	if (!datadir.isDirectory()) {
 	    throw new IllegalArgumentException("Data dir must be a valid directory path.");
 	}
@@ -82,7 +85,20 @@ public class ApplicationMain {
 	} finally {
 	    DebugStats.display();
 	}
+    }
+    private void fromDbCreateClassDiagramImages()
+    {
+	DiagramImageFactory ifac = new DiagramImageFactory("target/images");
+	
+    }
+    
+    public void run() throws Exception {
+	log.warn("Beginning");
+	ingestSourceCodeToDb();
+	fromDbCreateClassDiagramImages();
 
     }
+
+
 
 }
