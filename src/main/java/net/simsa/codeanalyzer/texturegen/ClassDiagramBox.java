@@ -43,10 +43,10 @@ final class ClassDiagramBox extends Canvas {
     }
     
     /** 
-     * Experimental - hash the package name into a consistent color value.
+     * Experimental - hash a string (like package name) into a consistent color value.
      * @return A pale (pastel/white-ish) background color
      */
-    private Color colorFromPackageName()
+    private Color colorFromString(String text)
     {
 	// We want a fairly pale color, so black text looks good.
 	// So, the minimum possible value for each channel is 191 (light gray).
@@ -54,8 +54,8 @@ final class ClassDiagramBox extends Canvas {
 	// Which means needing 2^6 * 2^6 * 2^6 = 2^18 in total for all channels.
 	int size18bit = 262144;
 	
-	// hash the name, and mod to the size of value range we need.
-	int num = jpackageName.hashCode() % size18bit;
+	// hash the text, and mod to the size of value range we need.
+	int num = text.hashCode() % size18bit;
 	
 	// pick off 6 bits for each color channel via bitmask, and then adjust its scale.
 	int red = (num & 258048) >>> 12; // 0b111111000000000000
@@ -72,7 +72,7 @@ final class ClassDiagramBox extends Canvas {
      */
     public void paint(Graphics g) {
 	Rectangle r = getBounds();
-	g.setColor(colorFromPackageName());
+	g.setColor(colorFromString(this.jpackageName));
 	g.fillRect(0, 0, r.width, r.height);
 
 	g.setColor(Color.BLACK);
