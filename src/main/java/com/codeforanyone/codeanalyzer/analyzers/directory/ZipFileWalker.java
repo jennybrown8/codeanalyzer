@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.analyzers.directory;
+package com.codeforanyone.codeanalyzer.analyzers.directory;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,11 +6,12 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.codeforanyone.codeanalyzer.analyzers.Analyzer;
+import com.codeforanyone.codeanalyzer.analyzers.AnalyzerFactory;
+import com.codeforanyone.codeanalyzer.analyzers.BatchEntityPersister;
+import com.codeforanyone.codeanalyzer.model.DebugStats;
+
 import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.analyzers.Analyzer;
-import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
-import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
-import net.simsa.codeanalyzer.model.DebugStats;
 
 public class ZipFileWalker implements Analyzer {
     static Logger log = LogManager.getLogger();

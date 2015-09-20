@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.analyzers;
+package com.codeforanyone.codeanalyzer.analyzers;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.simsa.codeanalyzer.analyzers.directory.DirectoryWalker;
-import net.simsa.codeanalyzer.analyzers.directory.ZipFileWalker;
+import com.codeforanyone.codeanalyzer.analyzers.directory.DirectoryWalker;
+import com.codeforanyone.codeanalyzer.analyzers.directory.ZipFileWalker;
 
 public class AnalyzerFactory {
     Logger log = LogManager.getLogger();

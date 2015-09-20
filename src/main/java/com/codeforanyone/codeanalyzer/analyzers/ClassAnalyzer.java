@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.analyzers;
+package com.codeforanyone.codeanalyzer.analyzers;
 
 import java.io.IOException;
 

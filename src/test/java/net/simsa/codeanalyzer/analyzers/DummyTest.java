@@ -3,6 +3,8 @@ package net.simsa.codeanalyzer.analyzers;
 import java.io.IOException;
 import java.util.List;
 
+import com.codeforanyone.codeanalyzer.analyzers.Analyzer;
+
 import net.java.truevfs.access.TFile;
 
 public class DummyTest implements Analyzer {

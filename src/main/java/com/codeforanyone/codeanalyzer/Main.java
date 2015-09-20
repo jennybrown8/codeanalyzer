@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer;
+package com.codeforanyone.codeanalyzer;
 
 import org.apache.logging.log4j.LogManager;
 import org.jboss.weld.environment.se.StartMain;

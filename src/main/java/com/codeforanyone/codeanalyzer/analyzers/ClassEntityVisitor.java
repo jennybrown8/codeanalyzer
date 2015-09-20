@@ -1,7 +1,6 @@
-package net.simsa.codeanalyzer.analyzers;
+package com.codeforanyone.codeanalyzer.analyzers;
 
 import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.model.JClass;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,6 +10,8 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
+
+import com.codeforanyone.codeanalyzer.model.JClass;
 
 public class ClassEntityVisitor extends ClassVisitor {
 

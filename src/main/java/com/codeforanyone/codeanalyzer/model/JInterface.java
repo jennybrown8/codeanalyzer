@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.model;
+package com.codeforanyone.codeanalyzer.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

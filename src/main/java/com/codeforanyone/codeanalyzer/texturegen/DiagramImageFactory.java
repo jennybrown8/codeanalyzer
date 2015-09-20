@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.texturegen;
+package com.codeforanyone.codeanalyzer.texturegen;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;

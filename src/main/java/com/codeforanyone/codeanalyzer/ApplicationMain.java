@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer;
+package com.codeforanyone.codeanalyzer;
 
 import java.util.List;
 
@@ -6,16 +6,17 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import net.java.truevfs.access.TFile;
-import net.simsa.codeanalyzer.analyzers.Analyzer;
-import net.simsa.codeanalyzer.analyzers.AnalyzerFactory;
-import net.simsa.codeanalyzer.analyzers.BatchEntityPersister;
-import net.simsa.codeanalyzer.analyzers.RelationshipDbUpdater;
-import net.simsa.codeanalyzer.model.DebugStats;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jboss.weld.environment.se.bindings.Parameters;
 import org.jboss.weld.environment.se.events.ContainerInitialized;
+
+import com.codeforanyone.codeanalyzer.analyzers.Analyzer;
+import com.codeforanyone.codeanalyzer.analyzers.AnalyzerFactory;
+import com.codeforanyone.codeanalyzer.analyzers.BatchEntityPersister;
+import com.codeforanyone.codeanalyzer.analyzers.RelationshipDbUpdater;
+import com.codeforanyone.codeanalyzer.model.DebugStats;
 
 /**
  * Destination entry point after CDI initializes, and the application's main

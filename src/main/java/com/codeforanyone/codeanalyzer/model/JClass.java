@@ -1,4 +1,4 @@
-package net.simsa.codeanalyzer.model;
+package com.codeforanyone.codeanalyzer.model;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
