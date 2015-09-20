@@ -122,6 +122,11 @@
 			<artifactId>querydsl-hql</artifactId>
 			<version>1.9.7</version>
 		</dependency>
+		<dependency>
+			<groupId>jmagick</groupId>
+			<artifactId>jmagick</artifactId>
+			<version>6.6.9</version>
+		</dependency>
 	</dependencies>
 
 
@@ -221,5 +226,7 @@
 
 	<pluginRepositories>
 	</pluginRepositories>
+
+
 
 </project>
