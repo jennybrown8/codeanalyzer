@@ -19,7 +19,7 @@ import javax.imageio.ImageIO;
 final class ClassDiagramBox extends Canvas {
     private static final long serialVersionUID = 1L;
     
-    private static final double scaleFactor = 3.0;
+    private static final double scaleFactor = 1.3;
     
     private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int)(36 * scaleFactor));
     private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int)(24 * scaleFactor));
@@ -94,7 +94,6 @@ final class ClassDiagramBox extends Canvas {
 
     private void autosize(Graphics2D graphics) {
 	Dimension classNameDim = getSize(jclassName, graphics, TITLE_FONT);
-	List<Dimension> methodDims = new ArrayList<Dimension>();
 	double maxWidth = 0;
 	double totalHeight = classNameDim.getHeight() + classNameVerticalPadding;
 	for (String text : this.methods) {
