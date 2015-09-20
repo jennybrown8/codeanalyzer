@@ -43,7 +43,7 @@ final class ClassDiagramBox extends Canvas {
     }
     
     public String getSuggestedFilename() {
-	return jpackageName.replace(".", "-") + "_" + jclassName + ".png";
+	return jpackageName.replace(".", "-").replace("/", "-") + "_" + jclassName + ".png";
     }
     
     /** 
@@ -117,9 +117,9 @@ final class ClassDiagramBox extends Canvas {
 	return size;
     }
 
-    public void saveCanvas(String filepath) {
+    public void saveCanvas(String dir) {
 	// TODO: Is there a way to get valid Graphics2D without a buffered image? Pre-sizing to 1k is inefficient.
-	BufferedImage image = new BufferedImage((int)(600 * scaleFactor), (int)(1000 * scaleFactor), BufferedImage.TYPE_INT_RGB);
+	BufferedImage image = new BufferedImage((int)(2000 * scaleFactor), (int)(2000 * scaleFactor), BufferedImage.TYPE_INT_RGB);
 	Graphics2D g2 = (Graphics2D) image.getGraphics();
 	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 	autosize(g2); // needs a graphics to count font size
@@ -127,7 +127,7 @@ final class ClassDiagramBox extends Canvas {
 	BufferedImage subimage = image.getSubimage(0, 0, this.getWidth(), this.getHeight());
 	paint(g2); // and paint on it
 	try {
-	    ImageIO.write(subimage, "png", new File(filepath));
+	    ImageIO.write(subimage, "png", new File(dir + "/" + getSuggestedFilename()));
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

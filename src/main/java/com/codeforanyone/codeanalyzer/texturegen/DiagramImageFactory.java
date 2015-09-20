@@ -44,7 +44,7 @@ public class DiagramImageFactory {
 	for (String method : methods) {
 	    box.add(method);
 	}
-	box.saveCanvas(outputDir + "/" + box.getSuggestedFilename());
+	box.saveCanvas(outputDir);
     }
 
     private void createTestPic() {

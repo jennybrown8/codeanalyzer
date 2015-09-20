@@ -1,10 +1,13 @@
 package com.codeforanyone.codeanalyzer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +19,7 @@ import com.codeforanyone.codeanalyzer.analyzers.AnalyzerFactory;
 import com.codeforanyone.codeanalyzer.analyzers.BatchEntityPersister;
 import com.codeforanyone.codeanalyzer.analyzers.RelationshipDbUpdater;
 import com.codeforanyone.codeanalyzer.model.DebugStats;
+import com.codeforanyone.codeanalyzer.model.JClass;
 import com.codeforanyone.codeanalyzer.texturegen.DiagramImageFactory;
 
 import net.java.truevfs.access.TFile;
@@ -41,9 +45,12 @@ public class ApplicationMain {
 
     @Inject
     BatchEntityPersister batch;
-    
+
     @Inject
     RelationshipDbUpdater dbUpdater;
+
+    @Inject
+    EntityManager em;
 
     public ApplicationMain() {
     }
@@ -73,32 +80,42 @@ public class ApplicationMain {
 	try {
 	    // Clean the database in preparation.
 	    dbUpdater.before();
-	    
-	    // Walk every jar/war starting in this directory, creating entities as we go.
+
+	    // Walk every jar/war starting in this directory, creating entities
+	    // as we go.
 	    dirWalker.process();
-	    
-	    // The batch entity saving may have an incomplete batch in the final set, so save those.
+
+	    // The batch entity saving may have an incomplete batch in the final
+	    // set, so save those.
 	    batch.completeFinalSave();
 
-	    // Fill in relational information in bulk without overhead of entity traversal.
+	    // Fill in relational information in bulk without overhead of entity
+	    // traversal.
 	    dbUpdater.after();
 	} finally {
 	    DebugStats.display();
 	}
     }
-    private void fromDbCreateClassDiagramImages()
-    {
+
+    private void fromDbCreateClassDiagramImages() {
 	DiagramImageFactory ifac = new DiagramImageFactory("target/images");
-	
+	Query q = em.createQuery("from JClass");
+	List<JClass> classes = q.getResultList();
+	List<String> methods = new ArrayList<String>(); // TODO
+	int count = 0;
+	for (JClass jclass : classes) {
+	    ifac.generate(jclass.getPackageName(), jclass.getSimpleName(), methods);
+	    if (++count % 100 == 0) {
+		System.out.println("Generated " + count + " images");
+	    }
+	}
     }
-    
+
     public void run() throws Exception {
 	log.warn("Beginning");
 	ingestSourceCodeToDb();
 	fromDbCreateClassDiagramImages();
 
     }
-
-
 
 }
