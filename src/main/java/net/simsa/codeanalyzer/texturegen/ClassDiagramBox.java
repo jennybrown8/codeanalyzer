@@ -42,6 +42,10 @@ final class ClassDiagramBox extends Canvas {
 	methods.add(method);
     }
     
+    public String getSuggestedFilename() {
+	return jpackageName.replace(".", "-") + "_" + jclassName + ".png";
+    }
+    
     /** 
      * Experimental - hash a string (like package name) into a consistent color value.
      * @return A pale (pastel/white-ish) background color
@@ -94,7 +98,7 @@ final class ClassDiagramBox extends Canvas {
 
     private void autosize(Graphics2D graphics) {
 	Dimension classNameDim = getSize(jclassName, graphics, TITLE_FONT);
-	double maxWidth = 0;
+	double maxWidth = classNameDim.getWidth();
 	double totalHeight = classNameDim.getHeight() + classNameVerticalPadding;
 	for (String text : this.methods) {
 	    Dimension methodDim = getSize(text, graphics, SMALL_FONT);
