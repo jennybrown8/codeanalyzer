@@ -37,6 +37,20 @@ CREATE TABLE `codeanalyzer`.`JClassImplementsJInterface` (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE `codeanalyzer`.`JMethod` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `jclass_id` INTEGER UNSIGNED NOT NULL,
+  `methodName` VARCHAR(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `codeanalyzer`.`JMethodReferencesJType` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `jmethod_id` INTEGER UNSIGNED,
+  `jtypeName` VARCHAR(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+-- dont know if the type it references is a class, enum, interface, or annoatation, yet.
 
 -- Verify index length vs field length for text columns.
 -- Plan out how I'm going to make a second pass over the table to build normalized data for packages/etc

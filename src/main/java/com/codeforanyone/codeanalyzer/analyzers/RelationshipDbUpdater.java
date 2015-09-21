@@ -20,6 +20,8 @@ public class RelationshipDbUpdater {
 	em.createNativeQuery("delete from JInterface").executeUpdate();
 	em.createNativeQuery("delete from JClassImplementsJInterface").executeUpdate();
 	em.createNativeQuery("delete from JClass").executeUpdate();
+	em.createNativeQuery("delete from JMethodReferencesJType").executeUpdate();
+	em.createNativeQuery("delete from JMethod").executeUpdate();
 	em.getTransaction().commit();
 
     }

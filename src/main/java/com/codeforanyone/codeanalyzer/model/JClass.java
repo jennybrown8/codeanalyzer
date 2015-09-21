@@ -32,9 +32,11 @@ public class JClass {
     String[] interfaces;
 
     Set<JClassImplementsJInterface> implementedInterfaces;
+    Set<JMethod> jMethods;
     
     public JClass() {
 	implementedInterfaces = new LinkedHashSet<JClassImplementsJInterface>();
+	jMethods = new LinkedHashSet<JMethod>();
     }
 
     @Id
@@ -64,6 +66,10 @@ public class JClass {
 	    relation.setInterfaceName(s);
 	    implementedInterfaces.add(relation);
 	}
+    }
+    
+    public void addMethod(JMethod jmethod) {
+	jMethods.add(jmethod);
     }
 
     public String getSimpleName() {
@@ -137,6 +143,15 @@ public class JClass {
 
     public void setImplementedInterfaces(Set<JClassImplementsJInterface> implementedInterfaces) {
         this.implementedInterfaces = implementedInterfaces;
+    }
+    
+    @OneToMany(mappedBy="jClass", cascade=CascadeType.ALL) 
+    public Set<JMethod> getJMethods() {
+	return jMethods;
+    }
+    
+    public void setJMethods(Set<JMethod> jmethods) {
+	this.jMethods = jmethods;
     }
 
 }

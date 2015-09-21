@@ -18,16 +18,19 @@ import javax.imageio.ImageIO;
 
 final class ClassDiagramBox extends Canvas {
     private static final long serialVersionUID = 1L;
-    
+
     private static final double scaleFactor = 1.3;
-    
-    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int)(36 * scaleFactor));
-    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int)(24 * scaleFactor));
+
+    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int) (36 * scaleFactor));
+    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int) (24 * scaleFactor));
 
     private static final double classNameVerticalPadding = 8 * scaleFactor;
     private static final double methodNameVerticalPadding = 2 * scaleFactor;
     private static final double sidePadding = 10 * scaleFactor;
     private static final double footerPadding = 10 * scaleFactor;
+
+    private static int ESTIMATED_PIXELS_PER_ROW = 100; // shortcut math for
+						       // raster size planning
 
     protected String jclassName = "";
     protected String jpackageName = "";
@@ -41,30 +44,33 @@ final class ClassDiagramBox extends Canvas {
     public void add(String method) {
 	methods.add(method);
     }
-    
+
     public String getSuggestedFilename() {
 	return jpackageName.replace(".", "-").replace("/", "-") + "_" + jclassName + ".png";
     }
-    
-    /** 
-     * Experimental - hash a string (like package name) into a consistent color value.
+
+    /**
+     * Experimental - hash a string (like package name) into a consistent color
+     * value.
+     * 
      * @return A pale (pastel/white-ish) background color
      */
-    private Color colorFromString(String text)
-    {
+    private Color colorFromString(String text) {
 	// We want a fairly pale color, so black text looks good.
 	// So, the minimum possible value for each channel is 191 (light gray).
-	// That leaves us 64 levels of variation for each channel (191 + 64 = 255). 
+	// That leaves us 64 levels of variation for each channel (191 + 64 =
+	// 255).
 	// Which means needing 2^6 * 2^6 * 2^6 = 2^18 in total for all channels.
 	int size18bit = 262144;
-	
+
 	// hash the text, and mod to the size of value range we need.
 	int num = text.hashCode() % size18bit;
-	
-	// pick off 6 bits for each color channel via bitmask, and then adjust its scale.
+
+	// pick off 6 bits for each color channel via bitmask, and then adjust
+	// its scale.
 	int red = (num & 258048) >>> 12; // 0b111111000000000000
-	int green = (num & 4032) >>> 6;  // 0b000000111111000000
-	int blue = (num & 63);           // 0b000000000000111111
+	int green = (num & 4032) >>> 6; // 0b000000111111000000
+	int blue = (num & 63); // 0b000000000000111111
 
 	// now each of (red, green, blue) should be safely within 0-64
 	return new Color(191 + red, 191 + green, 191 + blue);
@@ -118,8 +124,10 @@ final class ClassDiagramBox extends Canvas {
     }
 
     public void saveCanvas(String dir) {
-	// TODO: Is there a way to get valid Graphics2D without a buffered image? Pre-sizing to 1k is inefficient.
-	BufferedImage image = new BufferedImage((int)(2000 * scaleFactor), (int)(2000 * scaleFactor), BufferedImage.TYPE_INT_RGB);
+	// TODO: Is there a way to get valid Graphics2D without a buffered
+	// image? Pre-sizing is inefficient.
+	BufferedImage image = new BufferedImage((int) (2000 * scaleFactor),
+		(int) (ESTIMATED_PIXELS_PER_ROW * (methods.size() + 2)), BufferedImage.TYPE_INT_RGB);
 	Graphics2D g2 = (Graphics2D) image.getGraphics();
 	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 	autosize(g2); // needs a graphics to count font size

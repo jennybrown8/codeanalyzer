@@ -3,6 +3,7 @@ package com.codeforanyone.codeanalyzer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import com.codeforanyone.codeanalyzer.analyzers.BatchEntityPersister;
 import com.codeforanyone.codeanalyzer.analyzers.RelationshipDbUpdater;
 import com.codeforanyone.codeanalyzer.model.DebugStats;
 import com.codeforanyone.codeanalyzer.model.JClass;
+import com.codeforanyone.codeanalyzer.model.JMethod;
 import com.codeforanyone.codeanalyzer.texturegen.DiagramImageFactory;
 
 import net.java.truevfs.access.TFile;
@@ -101,9 +103,14 @@ public class ApplicationMain {
 	DiagramImageFactory ifac = new DiagramImageFactory("target/images");
 	Query q = em.createQuery("from JClass");
 	List<JClass> classes = q.getResultList();
-	List<String> methods = new ArrayList<String>(); // TODO
 	int count = 0;
 	for (JClass jclass : classes) {
+	    List<String> methods = new ArrayList<String>();
+	    Set<JMethod> jmethods = jclass.getJMethods();
+	    for (JMethod method : jmethods) {
+		methods.add(method.getMethodName());
+	    }
+	    
 	    ifac.generate(jclass.getPackageName(), jclass.getSimpleName(), methods);
 	    if (++count % 100 == 0) {
 		System.out.println("Generated " + count + " images");
