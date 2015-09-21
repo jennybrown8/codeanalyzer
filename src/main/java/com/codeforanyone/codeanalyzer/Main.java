@@ -23,7 +23,7 @@ public class Main extends StartMain {
 	} else {
 	    Main main = new Main(args);
 	    main.init(args);
-	    LogManager.getLogger().warn("Complete.");
+	    LogManager.getLogger().warn("Complete. Look in ./target/images/ for output.");
 	}
     }
 }

@@ -29,8 +29,8 @@ final class ClassDiagramBox extends Canvas {
     private static final double sidePadding = 10 * scaleFactor;
     private static final double footerPadding = 10 * scaleFactor;
 
-    private static int ESTIMATED_PIXELS_PER_ROW = 100; // shortcut math for
-						       // raster size planning
+    // shortcut math for efficient vertical raster size planning
+    private static int ESTIMATED_PIXELS_PER_ROW = (int)( 32 * scaleFactor); 
 
     protected String jclassName = "";
     protected String jpackageName = "";
@@ -73,7 +73,8 @@ final class ClassDiagramBox extends Canvas {
 	int blue = (num & 63); // 0b000000000000111111
 
 	// now each of (red, green, blue) should be safely within 0-64
-	return new Color(191 + red, 191 + green, 191 + blue);
+	int baseBrightness = 175; // can be set to anything 0-191; above that clipping will occur in highlights.
+	return new Color(baseBrightness + red, baseBrightness + green, baseBrightness + blue);
     }
 
     /**

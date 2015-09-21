@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -107,11 +109,19 @@ public class ApplicationMain {
 	for (JClass jclass : classes) {
 	    List<String> methods = new ArrayList<String>();
 	    Set<JMethod> jmethods = jclass.getJMethods();
+	    // TODO: This is intentionally removing matching method names with
+	    // different signatures.
+	    // Instead, method signatures might show up in the output.
+	    SortedSet<String> methodNames = new TreeSet<String>();
 	    for (JMethod method : jmethods) {
-		methods.add(method.getMethodName());
+		if (method.getMethodName().equals("<init>")) {
+		    methodNames.add(jclass.getSimpleName() + "()");
+		} else {
+		    methodNames.add(method.getMethodName() + "()");
+		}
 	    }
-	    
-	    ifac.generate(jclass.getPackageName(), jclass.getSimpleName(), methods);
+
+	    ifac.generate(jclass.getPackageName(), jclass.getSimpleName(), methodNames);
 	    if (++count % 100 == 0) {
 		System.out.println("Generated " + count + " images");
 	    }
