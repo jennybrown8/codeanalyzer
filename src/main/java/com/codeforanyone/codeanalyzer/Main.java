@@ -19,7 +19,7 @@ public class Main extends StartMain {
 
     public static void main(String[] args) {
 	if (args.length < 1) {
-	    System.out.println("Usage: net.simsa.codeanalyzer.Main path/to/directory/with/war");
+	    System.out.println("Usage: come.codeforanyone.codeanalyzer.Main path/to/directory/with/war");
 	} else {
 	    Main main = new Main(args);
 	    main.init(args);

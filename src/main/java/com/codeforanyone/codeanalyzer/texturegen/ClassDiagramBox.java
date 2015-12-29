@@ -11,6 +11,9 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +24,10 @@ final class ClassDiagramBox extends Canvas {
 
     private static final double scaleFactor = 1.3;
 
-    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int) (36 * scaleFactor));
-    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int) (24 * scaleFactor));
+    // Not too big here - this determines texture size and ultimately GPU performance in 3D view.
+    // Size 12 and 8 is readable but fuzzy.  18 and 12 is more usable.
+    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int) (18 * scaleFactor));
+    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int) (12 * scaleFactor));
 
     private static final double classNameVerticalPadding = 8 * scaleFactor;
     private static final double methodNameVerticalPadding = 2 * scaleFactor;
@@ -45,8 +50,25 @@ final class ClassDiagramBox extends Canvas {
 	methods.add(method);
     }
 
-    public String getSuggestedFilename() {
-	return jpackageName.replace(".", "-").replace("/", "-") + "_" + jclassName + ".png";
+    public String getSuggestedPngFilename() {
+	return getSuggestedPrefix() + ".png";
+    }
+    public String getSuggestedMetadataFilename() {
+	return getSuggestedPrefix() + ".txt";
+    }
+    
+    public String getSuggestedSubdirName() {
+	String cleanPackage = jpackageName.replace(".", "-").replace("/", "-");
+	String[] pieces = cleanPackage.split("-");
+	if (pieces.length >= 3) {
+	    return pieces[0] + "-" + pieces[1] + "-" + pieces[2];
+	} else {
+	    return cleanPackage;
+	}
+    }
+
+    private String getSuggestedPrefix() {
+	return jpackageName.replace(".", "-").replace("/", "-") + "_" + jclassName;
     }
 
     /**
@@ -124,7 +146,30 @@ final class ClassDiagramBox extends Canvas {
 	return size;
     }
 
+    public void saveMetadata(String dir) {
+	File packagedir = new File(dir + "/" + getSuggestedSubdirName());
+	packagedir.mkdirs();
+	PrintWriter pw;
+	try {
+	    pw = new PrintWriter(new FileWriter(new File(dir + "/" + getSuggestedSubdirName() + "/" + getSuggestedMetadataFilename())));
+	} catch (IOException e) {
+	    throw new RuntimeException(e);
+	}
+	pw.println("package\t" + jpackageName);
+	pw.println("class\t" + jclassName);
+	pw.println("xsize\t" + this.getWidth());
+	pw.println("ysize\t" + this.getHeight());
+	for (String method : methods) {
+	    pw.println("method\t" + method);
+	}
+	pw.close();
+    }
+    
     public void saveCanvas(String dir) {
+	File packagedir = new File(dir + "/" + getSuggestedSubdirName());
+	packagedir.mkdirs();
+
+	
 	// TODO: Is there a way to get valid Graphics2D without a buffered
 	// image? Pre-sizing is inefficient.
 	BufferedImage image = new BufferedImage((int) (2000 * scaleFactor),
@@ -136,7 +181,7 @@ final class ClassDiagramBox extends Canvas {
 	BufferedImage subimage = image.getSubimage(0, 0, this.getWidth(), this.getHeight());
 	paint(g2); // and paint on it
 	try {
-	    ImageIO.write(subimage, "png", new File(dir + "/" + getSuggestedFilename()));
+	    ImageIO.write(subimage, "png", new File(dir + "/" + getSuggestedSubdirName() + "/" + getSuggestedPngFilename()));
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

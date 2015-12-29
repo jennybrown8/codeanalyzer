@@ -47,6 +47,7 @@ public class DiagramImageFactory {
 	    box.add(method);
 	}
 	box.saveCanvas(outputDir);
+	box.saveMetadata(outputDir);
     }
 
     private void createTestPic() {
