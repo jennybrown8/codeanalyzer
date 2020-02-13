@@ -22,12 +22,12 @@ import javax.imageio.ImageIO;
 final class ClassDiagramBox extends Canvas {
     private static final long serialVersionUID = 1L;
 
-    private static final double scaleFactor = 1.3;
+    private static final double scaleFactor = 1.0;
 
     // Not too big here - this determines texture size and ultimately GPU performance in 3D view.
     // Size 12 and 8 is readable but fuzzy.  18 and 12 is more usable.
-    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int) (18 * scaleFactor));
-    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int) (12 * scaleFactor));
+    private static final Font TITLE_FONT = new Font("Anonymous Pro", Font.BOLD, (int) (12 * scaleFactor));
+    private static final Font SMALL_FONT = new Font("Anonymous Pro", Font.PLAIN, (int) (9 * scaleFactor));
 
     private static final double classNameVerticalPadding = 8 * scaleFactor;
     private static final double methodNameVerticalPadding = 2 * scaleFactor;
@@ -101,7 +101,7 @@ final class ClassDiagramBox extends Canvas {
 
     /**
      * This is the brains of the operation; draws the class name title and then
-     * the list of methods beneath it.
+     * the list of methods beneath it. And then the class name title again at the bottom.
      */
     public void paint(Graphics g) {
 	Rectangle r = getBounds();
@@ -122,19 +122,21 @@ final class ClassDiagramBox extends Canvas {
 	    yloc += height;
 	    g.drawString(text, (int) (sidePadding), (int) yloc);
 	}
+	yloc += titleHeight + classNameVerticalPadding;
+	g.setFont(TITLE_FONT);
+	g.drawString(this.jclassName, (int) (sidePadding), (int) yloc);
 
     }
 
     private void autosize(Graphics2D graphics) {
 	Dimension classNameDim = getSize(jclassName, graphics, TITLE_FONT);
 	double maxWidth = classNameDim.getWidth();
-	double totalHeight = classNameDim.getHeight() + classNameVerticalPadding;
+	double totalHeight = (3.0 * classNameDim.getHeight()) + classNameVerticalPadding;
 	for (String text : this.methods) {
 	    Dimension methodDim = getSize(text, graphics, SMALL_FONT);
 	    maxWidth = Math.max(maxWidth, methodDim.getWidth());
 	    totalHeight += methodDim.getHeight() + methodNameVerticalPadding;
 	}
-
 	setBounds(0, 0, (int) (maxWidth + 2 * sidePadding), (int) (totalHeight + footerPadding));
     }
 
